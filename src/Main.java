@@ -1,3 +1,4 @@
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.*;
 
@@ -32,18 +33,14 @@ public class Main {
     {
     	Connection c = null;
 
-        String dbUrl = "jdbc:postgresql://ec2-54-235-242-63.compute-1.amazonaws.com:5432/ddd54jvsgoiq4f1?&ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory";
+    	URI dbUri = new URI(System.getenv("DATABASE_URL"));
         String uname = "rehtiztyxtozbp";
         String pass = "947fe2c544d3d46fc7532f7efa58a324f4ac1de17d78fd40a8b85b505013f33d";
-        try 
-        {
-        	Class.forName("org.postgresql.Driver");
-        	// Connecting to database using credentials
-			c = DriverManager.getConnection(dbUrl, uname, pass);
-		} catch (Exception e) 
-        {
-			e.printStackTrace();
-		}
+        String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require";
+        
+        //Class.forName("org.postgresql.Driver");
+        // Connecting to database using credentials
+        c = DriverManager.getConnection(dbUrl, uname, pass);
         
 		return c;
     }

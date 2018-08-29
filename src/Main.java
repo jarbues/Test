@@ -34,8 +34,8 @@ public class Main {
     	Connection c = null;
 
     	URI dbUri = new URI(System.getenv("DATABASE_URL"));
-        String uname = "rehtiztyxtozbp";
-        String pass = "947fe2c544d3d46fc7532f7efa58a324f4ac1de17d78fd40a8b85b505013f33d";
+    	String uname = dbUri.getUserInfo().split(":")[0];
+        String pass = dbUri.getUserInfo().split(":")[1];
         String dbUrl = "jdbc:postgresql://" + dbUri.getHost() + ':' + dbUri.getPort() + dbUri.getPath() + "?sslmode=require";
         
         //Class.forName("org.postgresql.Driver");

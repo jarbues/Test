@@ -25,8 +25,8 @@ public class Main {
         		+ "VALUES "
         		+ "('LOJKF', 'SAM', 'PLACE')");*/
         
-        System.out.println("querying SELECT * FROM first");
-        ResultSet rs = stmt.executeQuery("SELECT * FROM first");
+        System.out.println("querying SELECT * FROM tables.tab");
+        ResultSet rs = stmt.executeQuery("SELECT * FROM tables.tab");
         ResultSetMetaData rsmd = rs.getMetaData();
         
         int columnsNumber = rsmd.getColumnCount();
@@ -45,9 +45,9 @@ public class Main {
     private static Connection getConnection() throws URISyntaxException, SQLException {
     	Connection c = null;
 
-        String dbUrl = "jdbc:postgresql://ec2-23-23-216-40.compute-1.amazonaws.com:5432/d5i8tc220p5e26?&ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory";
-        String uname = "nzspjzexyynxnz";
-        String pass = "811ecfc859e720d7850f544af5f010c10d1bf60e15abfceaf0f3356fa77e5b6e";
+        String dbUrl = "jdbc:postgresql://ec2-54-235-242-63.compute-1.amazonaws.com:5432/ddd54jvsgoiq4f1?&ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory";
+        String uname = "rehtiztyxtozbp";
+        String pass = "947fe2c544d3d46fc7532f7efa58a324f4ac1de17d78fd40a8b85b505013f33d";
         try {
         	Class.forName("org.postgresql.Driver");
 			c = DriverManager.getConnection(dbUrl, uname, pass);

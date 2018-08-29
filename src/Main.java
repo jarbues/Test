@@ -10,25 +10,11 @@ public class Main {
         
         Statement stmt = connection.createStatement();
         
-        // Simple Database creation and inserting values
-        /*stmt.executeUpdate("DROP TABLE IF EXISTS first");
-        stmt.executeUpdate("CREATE TABLE first"
-        		+ "( ID CHAR(5) PRIMARY KEY, "
-        		+ "NAME VARCHAR, "
-        		+ "ADDRESS VARCHAR);");
-        stmt.executeUpdate("INSERT INTO first"
-        		+ "(ID, NAME, ADDRESS) "
-        		+ "VALUES "
-        		+ "('SIOJK', 'CARL', 'TOWN')");
-        stmt.executeUpdate("INSERT INTO first"
-        		+ "(ID, NAME, ADDRESS) "
-        		+ "VALUES "
-        		+ "('LOJKF', 'SAM', 'PLACE')");*/
-        
         System.out.println("querying SELECT * FROM tables.tab");
         ResultSet rs = stmt.executeQuery("SELECT * FROM tables.tab");
         ResultSetMetaData rsmd = rs.getMetaData();
         
+        // Result formatting
         int columnsNumber = rsmd.getColumnCount();
         while (rs.next()) 
         {
@@ -50,6 +36,7 @@ public class Main {
         String pass = "947fe2c544d3d46fc7532f7efa58a324f4ac1de17d78fd40a8b85b505013f33d";
         try {
         	Class.forName("org.postgresql.Driver");
+        	// Connecting to database using credentials
 			c = DriverManager.getConnection(dbUrl, uname, pass);
 		} catch (Exception e) {
 			e.printStackTrace();

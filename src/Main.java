@@ -14,7 +14,7 @@ public class Main {
         ResultSet rs = stmt.executeQuery("SELECT * FROM tables.tab");
         ResultSetMetaData rsmd = rs.getMetaData();
         
-        // Result formatting
+        // Result formatting 
         int columnsNumber = rsmd.getColumnCount();
         while (rs.next()) 
         {
